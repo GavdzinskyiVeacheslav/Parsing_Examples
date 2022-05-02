@@ -1,4 +1,6 @@
 # Byte-compiled / optimized / DLL files
+all_categories_dict.json
+data
 pars
 .bots/
 bots
