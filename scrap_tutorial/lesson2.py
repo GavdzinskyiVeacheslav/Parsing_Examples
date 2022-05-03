@@ -42,7 +42,7 @@ with open("all_categories_dict.json", encoding="utf-8") as file:
 
 iteration_count = int(len(all_categories)) - 1
 count = 0
-print(f"Всего итераций: {iteration_count}")
+print(f"Total iterations: {iteration_count}")
 
 for category_name, category_href in all_categories.items():
 
@@ -62,12 +62,12 @@ for category_name, category_href in all_categories.items():
 
     soup = BeautifulSoup(src, "lxml")
 
-    # проверка страницы на наличие таблицы с продуктами
+    # Checking the page for the presence of a table with products
     alert_block = soup.find(class_="uk-alert-danger")
     if alert_block is not None:
         continue
 
-    # собираем заголовки таблицы
+    # Collecting table headers
     table_head = soup.find(class_="mzr-tc-group-table").find("tr").find_all("th")
     product = table_head[0].text
     calories = table_head[1].text
@@ -87,7 +87,7 @@ for category_name, category_href in all_categories.items():
             )
         )
 
-    # собираем данные продуктов
+    # Сollect product data
     products_data = soup.find(class_="mzr-tc-group-table").find("tbody").find_all("tr")
 
     product_info = []
@@ -101,14 +101,14 @@ for category_name, category_href in all_categories.items():
         carbohydrates = product_tds[4].text
 
         product_info.append(
-            {
-                "Title": title,
-                "Calories": calories,
-                "Proteins": proteins,
-                "Fats": fats,
-                "Carbohydrates": carbohydrates
-            }
-        )
+             {
+                 "Title": title,
+                 "Calories": calories,
+                 "Proteins": proteins,
+                 "Fats": fats,
+                 "Carbohydrates": carbohydrates
+             }
+         )
 
         with open(f"data/{count}_{category_name}.csv", "a", encoding="utf-8") as file:
             writer = csv.writer(file)
@@ -125,13 +125,14 @@ for category_name, category_href in all_categories.items():
         json.dump(product_info, file, indent=4, ensure_ascii=False)
 
     count += 1
-    print(f"# Итерация {count}. {category_name} записан...")
+    print(f"# Iteration {count}. {category_name} recorder...")
     iteration_count = iteration_count - 1
 
     if iteration_count == 0:
-        print("Работа завершена")
+        print("Job completed")
         break
 
-    print(f"Осталось итераций: {iteration_count}")
-    #sleep(random.randrange(2, 4))		    
+    print(f"Remaining iterations: {iteration_count}")
+    sleep(random.randrange(2, 4))
+    		    
 				

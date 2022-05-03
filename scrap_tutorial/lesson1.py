@@ -92,17 +92,14 @@ soup = BeautifulSoup(src, "lxml")
 # 	print(link_href_attr)
 # 	print(link_data_attr)
 
-# find_a_by_text = soup.find('a', text='Одежда')
-# print(find_a_by_text)
-
-# find_a_by_text = soup.find('a', text='Одежда для взрослых')
+# find_a_by_text = soup.find('a', text='Clothes')
 # print(find_a_by_text)
 
 
-# find_a_by_text = soup.find('a', text=re.compile('Одежда'))
+# find_a_by_text = soup.find('a', text=re.compile('Clothes'))
 # print(find_a_by_text)
 
 
-find_all_clothes = soup.find_all(text=re.compile("[Оо]дежда"))
+find_all_clothes = soup.find_all(text=re.compile("[Cc]lothes"))
 print(find_all_clothes)
 
