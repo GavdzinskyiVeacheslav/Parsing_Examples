@@ -1,14 +1,11 @@
 # Byte-compiled / optimized / DLL files
 Test_lesson2.py
-index2.html
-lesson33.py
 all_categories_dict.json
 data
 pars
-.bots/
-bots
-mynotes
 mynotes.txt
+
+
 __pycache__/
 *.py[cod]
 *$py.class
