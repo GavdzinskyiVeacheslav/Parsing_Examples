@@ -4,6 +4,11 @@ import json
 import csv
 from time import sleep
 import random
+from proxy import login, password
+
+proxies = {
+    'https' : f'http://{login}:{password}@166.1.15.139:45785'
+}
 
 url = "https://health-diet.ru/table_calorie/?utm_source=leftMenu&utm_medium=table_calorie"
 
@@ -51,7 +56,7 @@ for category_name, category_href in all_categories.items():
         if item in category_name:
             category_name = category_name.replace(item, "_")
 
-    req = requests.get(url=category_href, headers=headers)
+    req = requests.get(url=category_href, headers=headers, proxies=proxies)
     src = req.text
 
     with open(f"data/{count}_{category_name}.html", "w", encoding="utf-8") as file:

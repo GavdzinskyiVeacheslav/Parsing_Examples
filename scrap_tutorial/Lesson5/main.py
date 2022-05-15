@@ -2,6 +2,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from proxy_info import login, password
 
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
